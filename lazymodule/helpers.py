@@ -10,6 +10,6 @@ def touch(path):
         os.utime(path, None)
 
 def make_template_file(template_str, file_name, namespace):
-	text_file.open(file_name, 'w+')
-	text_file.write(Template(template_str, searchlist = [namespace]))
-	text_file.close()
+	newfile = open(file_name, 'w+')
+	newfile.write(str(Template(template_str, searchList = [namespace])))
+	newfile.close()
