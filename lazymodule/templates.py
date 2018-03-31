@@ -1,4 +1,4 @@
-template_setup_py = """
+template_setup_py = """#Setup script. Made with lazymodule
 from distutils.core import setup, Extension
 
 setup(
@@ -6,8 +6,7 @@ setup(
 	version	= '0.1',
 	author = '$author',
 	description = \"\"\"DESCRIPTION_HERE\"\"\",
-	py_modules = ['$module_name'],
+	packages = ['$module_name'],
 	install_requires=[],
-	
 	)
 """

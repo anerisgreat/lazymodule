@@ -5,7 +5,11 @@ from helpers import quick_create, touch, make_template_file
 def init_module(module_name, author):
 	print(module_name)
 	print(author)
+
+	#Creating Python directory
 	quick_create(module_name)
+	
+	#Creating __init__.py file in Python directory
 	touch(os.path.join(module_name, '__init__.py'))
 
 	namespace = {
