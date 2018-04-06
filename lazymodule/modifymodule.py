@@ -37,7 +37,7 @@ def init_module(module_name, author):
 def gen_swig():
 	#try:
 		print('Generating swig module')
-		config_mod = __import__('setup_config', fromlist=[''])
+		config_mod = __import__(os.path.join(os.getcwd() ,'setup_config'), fromlist=[''])
 		module_name = config_mod.module_name
 		header_names = [ntpath.basename(full_name) for full_name in glob(module_name + '/include/*.h')]
 

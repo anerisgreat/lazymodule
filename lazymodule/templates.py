@@ -36,7 +36,7 @@ template_module_i = """//Template for swig wrapper. Made with lazymodule
 %module $module_name
 %{
 #for $header_name in $header_names
-	#include "$header_name"
+	\#include "$header_name"
 #end for
 %}
 
