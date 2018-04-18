@@ -7,8 +7,7 @@ import templates
 from helpers import quick_create, touch, make_template_file
 
 def init_module(module_name):
-	print(module_name)
-	print(author)
+	print('Creating module: ' + module_name)
 
 	#Creating Python directory
 	quick_create(module_name)

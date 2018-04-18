@@ -9,6 +9,7 @@ module_extention = Extension('_$module_name',
 	library_dirs = setup_config.lib_dirs,
 	runtime_library_dirs = setup_config.lib_dirs,
 	swig_opts = ['-c++', '-modern'	] + ['-I'+build_include_dir for build_include_dir in setup_config.build_include_dirs]
+	)
 
 setup(
 	name = '$module_name',
@@ -69,7 +70,7 @@ template_module_i = """//Template for swig wrapper. Made with lazymodule
 
 """
 
-template_setup_sh """#Setup bash script. Made with lazymodule
+template_setup_sh = """#Setup bash script. Made with lazymodule
 #Install dependencies here if necessary
 
 #Generating swig file.
