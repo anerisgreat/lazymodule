@@ -1,11 +1,12 @@
 import os
 import ntpath
 from glob import glob
+import sys
 
 import templates
 from helpers import quick_create, touch, make_template_file
 
-def init_module(module_name, author):
+def init_module(module_name):
 	print(module_name)
 	print(author)
 
@@ -19,7 +20,6 @@ def init_module(module_name, author):
 	touch(os.path.join(module_name, '__init__.py'))
 
 	namespace = {
-		'author' : author,
 		'module_name' : module_name
 	}
 	
@@ -33,28 +33,42 @@ def init_module(module_name, author):
 		file_name = 'setup_config.py',
 		namespace = namespace)
 
-	
+	make_template_file(
+		template_str = templates.template_setup_sh,
+		file_name = 'setup.sh',
+		namespace = namespace)
+
+	make_template_file(
+		template_str = templates.template_gitignore,
+		file_name = '.gitignore',
+		namespace = namespace)
+
+
 def gen_swig():
-	#try:
-		print('Generating swig module')
-		config_mod = __import__(os.path.join(os.getcwd() ,'setup_config'), fromlist=[''])
-		module_name = config_mod.module_name
-		header_names = [ntpath.basename(full_name) for full_name in glob(module_name + '/include/*.h')]
+	print('Generating swig module')
+	
+	sys.path.append(os.getcwd())
+	import setup_config as config_mod
+	module_name = config_mod.module_name
+	print('Detected module: ' + module_name)
 
-		print('Headers to include: ')
-		for header_name in header_names:
-			print(header_name)
+	header_names = [ntpath.basename(full_name) for full_name in glob(module_name + '/include/*.h')]
+	header_names += config_mod.swig_wrapped_headers
 
-		print('Starting..')
+	print('Headers to include: ')
+	for header_name in header_names:
+		print(header_name)
 
-		namespace = {
-			'module_name' : module_name,
-			'header_names' : header_names
-		}
+	print('Starting..')
+	namespace = {
+		'module_name' : module_name,
+		'header_names' : header_names
+	}
 
-		make_template_file(
-			template_str = templates.template_module_i,
-			file_name = module_name + '/' + module_name + '.i',
-			namespace = namespace)
-	#except:
-		#print('Error generating swig file.!')
+	make_template_file(
+		template_str = templates.template_module_i,
+		file_name = module_name + '/' + module_name + '.i',
+		namespace = namespace)
+
+	print('Finished creating ' + module_name + '.i')
+	
