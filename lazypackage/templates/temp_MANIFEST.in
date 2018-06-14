@@ -1,0 +1,4 @@
+graft $package_name
+include setup_config.py
+include setup.sh
+exclude *.pyc

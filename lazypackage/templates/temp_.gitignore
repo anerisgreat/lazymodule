@@ -1,0 +1,6 @@
+*.pyc
+build
+dist
+$package_name/$package_name#**#.i
+$package_name/$package_name#**#.py
+$package_name/$package_name#**#_wrap.cpp

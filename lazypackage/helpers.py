@@ -13,3 +13,10 @@ def make_template_file(template_str, file_name, namespace):
 	newfile = open(file_name, 'w+')
 	newfile.write(str(Template(template_str, searchList = [namespace])))
 	newfile.close()
+
+def quick_read(path):
+	packagedir, filename = os.path.split(__file__)
+	full_file_path = os.path.join(packagedir, path)
+	with open(full_file_path, 'r') as file:
+		ret = file.read()
+	return ret
