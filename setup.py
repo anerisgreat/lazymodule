@@ -13,6 +13,6 @@ setup(
         ],
     },
     package_data = {'templates':glob('lazypackage/templates/*')},
-    install_requires = [], #Requires cheetah but local repository does not have it
+    install_requires = ['cheetah3'],
 	include_package_data = True
 	)

@@ -1,2 +1,4 @@
-graft lazypackage
+graft testpackage
+include setup_config.py
+include setup.sh
 exclude *.pyc

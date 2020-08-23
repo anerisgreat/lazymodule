@@ -1,4 +1,2 @@
 graft lazypackage
-include setup_config.py
-include setup.sh
 exclude *.pyc

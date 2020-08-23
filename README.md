@@ -10,14 +10,12 @@ Lazypackages do not depend on Lazypackage after creation and only require SWIG t
 
 ## Installation
 
-To install, simply run setup.sh in the lazypackage installation directory after cloning
+To install, simply run the following command inside the package directory (might require sudo)
 
 *bash*
 
 ```bash
-git clone http://gitlab-prod/ssi/lazypackage --recursive
-cd lazypackage
-sudo bash setup.sh
+pip install .
 ```
 
 ## Usage
